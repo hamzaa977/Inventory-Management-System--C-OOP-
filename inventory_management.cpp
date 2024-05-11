@@ -1,3 +1,29 @@
+// Project :    Inventory Management System 
+
+
+
+
+// Coders :     Hamza Sajjad & Ghulam Murtaza  
+//                23p-0035      23p-0057
+
+
+
+// Purpose of code: 
+
+//                   The purpose of an inventory management system code is to efficiently track and manage inventory 
+//                   and by helping the users to get to know whats available in the inventory 
+//                   it only works when a user login tho inventory management system and to login 
+//                   user is required to register or signup 
+
+//                    It helps user by adding new product in the inventory and also helps them 
+//                    by removing products stored in the inventory 
+
+//                    Morevoer it makes it easy to find a product for user just by searching the product id 
+//                    and if a user dont know the product id than he/she can search for all products which are
+//                    availabl ein the invnetory .
+
+
+
 #include <iostream>
 #include <string>
 #include<fstream>
