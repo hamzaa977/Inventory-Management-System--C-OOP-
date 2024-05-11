@@ -44,32 +44,37 @@ public:
 
     void opt()
     {
-        int option;
-        
-        cout<<"Select an option from 1 to 5:"<<endl;
-        cin>>option;
-
-        switch(option)
+        char option;
+        do
         {
-            case 1:
-                signUp();
-                break;
-            case 2:
-                login();
-                break;
-            case 3:
-                aboutUs();
-                break;
-            case 4:
-                Managers();
-                break;
-            case 5:
-                exitProgram();
-                break;
-            default:
-                cout<<"Error Selection an option  !!"<<endl;
-                break;
+            cout<<"Select an option from 1 to 5:"<<endl;
+            cin>>option;
+
+            switch(option)
+            {
+                case '1' :
+                    signUp();
+                    break;
+                case '2' :
+                    login();
+                    break;
+                case '3':
+                    aboutUs();
+                    break;
+                case '4' :
+                    Managers();
+                    break;
+                case '5' :
+                    exitProgram();
+                    break;
+                default:
+                    cout<<endl;
+                    cout<<Red<<"Error Selection an option  !!"<<endl;
+                    cout<<Reset;
+                    break;
+            }
         }
+        while(option < '1' || option > '5');
     }
 
 private:
@@ -77,6 +82,7 @@ private:
         string user_id;
         string user_password;
         
+        cout<<endl;
         cout<<"Hold a minute ,Signing you up"<< endl;
         cout<<"Almost Done"<<endl<<endl;
         cout<<"Select your new Id :";
@@ -93,7 +99,7 @@ private:
             cout<<Green<<"SignUp sucessfuly  :) "<<endl;
             cout<<Reset;
 
-            //signup check
+            //signup check = correct
             cout<<endl;
             
             cout<<"Your new ID is "<<user_id;
@@ -133,8 +139,8 @@ private:
                 if(user_id==cuser_idFromFile && user_password==cuser_passwordFromFile)
                 {
                     found=true;
-                    //Logged in check
                     break;
+                    //Logged in check = correct
                 }
             }
             
@@ -161,12 +167,12 @@ private:
     void aboutUs()
     {
         cout<<endl;
-        cout<<"At our core, we're all about making businesses' lives easier by helping them keep track of their stuff better.";
-        cout<<" We're here to shake up how inventory management works, using smart tech and simple strategies.";
-        cout<<"Think of us as the friend who helps you tidy up your messy room, but for businesses.";
-        cout<<"From knowing exactly what's in stock to predicting what customers will want next, we've got it covered. Our goal?";
-        cout<<"To make inventory management a breeze, so businesses can focus on growing and thriving.";
-        cout<<"help them in their work ";
+        cout<<"At our core, we're all about making businesses' lives easier by helping them keep track of their stuff better."<<endl;
+        cout<<" We're here to shake up how inventory management works, using smart tech and simple strategies."<<endl;
+        cout<<"Think of us as the friend who helps you tidy up your messy room, but for businesses."<<endl;
+        cout<<"From knowing exactly what's in stock to predicting what customers will want next, we've got it covered. Our goal?"<<endl;
+        cout<<"To make inventory management a breeze, so businesses can focus on growing and thriving."<<endl;
+        cout<<"help them in their work "<<endl;
         cout<<endl;
         cout<<endl;
 
@@ -174,7 +180,7 @@ private:
         system("cls");
         displayMenu();
         opt();
-    }
+    }       //check = correct
 
 private:
     void Managers()
@@ -187,8 +193,8 @@ private:
         cout<<"1.  Hamza Sajjad (23p0035)"<<endl;
         cout<<"2.  Ghulam Murtaza  (23P-0057)"<<endl;
         cout<<endl<<endl;
-        
 
+                        // check = correct
         Enter();
         system("cls");
         displayMenu();
@@ -279,7 +285,7 @@ public:
         this->id=id;
     }
 
-    string getName() const
+    string getname() const
     {
         return name;
     }
@@ -289,7 +295,7 @@ public:
         this->name=name;
     }
 
-    string getCategory() const
+    string getcategory() const
     {
         return category;
     }
@@ -299,7 +305,7 @@ public:
         this->category=category;
     }
 
-    double getPrice()const
+    double getprice()const
     {
         return price;
     }
@@ -309,7 +315,7 @@ public:
         this->price=price;
     }
 
-    int getQuantity() const
+    int geetquantity() const
     {
         return quantity;
     }
@@ -320,12 +326,21 @@ public:
     }
 };
 
+
+// class category:public product{
+
+//     public:
+
+// };
+
 class Inventory{
 
 private:
     vector<product> p1s;    
 
 public:
+
+
     void addp1(product p1)
     {
         bool found=false;
@@ -333,7 +348,8 @@ public:
         {
             if(p.getId()==p1.getId())
             {
-                cout<<"Id already Exist."<<endl;
+                cout<<Red<<"Id already Exist."<<endl;
+                cout<<Reset;
                 found=true;
                 break;
             }
@@ -343,7 +359,7 @@ public:
             p1s.push_back(p1);
             cout<<Green<<" Product added successfully."<<endl;
             cout<<Reset;
-            cout<<"-----------------------------------------------------------"<<endl;
+            cout<<"___________________________________________________________"<<endl;
         }
     }
 
@@ -358,7 +374,7 @@ public:
                 found=true;
                 cout<<Green<<"Product removed successfully."<<endl;
                 cout<<Reset;
-                cout<<"-----------------------------------------------------------"<<endl;
+                cout<<"___________________________________________________________"<<endl;
                 break;
             }
         }
@@ -408,11 +424,14 @@ public:
     {
         for(auto& p1 : p1s)
         {
+            cout<<endl;
             cout<<"ID :"<< p1.getId() <<endl;
-            cout<<"Name :"<< p1.getName() <<endl;
-            cout<<"Category :"<< p1.getCategory()<<endl;
-            cout<<"Price : Rs. "<< p1.getPrice()<<endl;
-            cout<<"Quantity :"<< p1.getQuantity()<<endl;
+            cout<<"Name :"<< p1.getname() <<endl;
+            cout<<"Category :"<< p1.getcategory()<<endl;
+            cout<<"Price : Rs. "<< p1.getprice()<<endl;
+            cout<<"Quantity :"<< p1.geetquantity()<<endl;
+            cout<<"__________________________________________________________";
+            cout<<endl<<endl;
         }
     }
 };
@@ -422,15 +441,18 @@ public:
 int main()
 {
     Inventory inventory;
-    welcomeMessage();
-    Enter();
-
     MainPage mp1;
-    mp1.displayMenu();
-    mp1.opt();
+
+        welcomeMessage();
+        Enter();
+
+        mp1.displayMenu();
+        mp1.opt();
+
 
 char option;
     do{
+
         cout<<"Please select an option:"<<endl;
         cout<<"1. Add a Product"<<endl;
         cout<<"2. Remove a Product"<<endl;
@@ -487,17 +509,17 @@ char option;
             product* p1=inventory.findp1(id);
             if(p1)
             {
-                cout<<"Name: "<<p1->getName() <<endl;
-                cout<<"Category: "<<p1->getCategory() <<endl;
-                cout<<"Price: $ "<<p1->getPrice() <<endl;
-                cout<<"Quantity: "<<p1->getQuantity() <<endl;
-                cout<<"-----------------------------------------------------------"<<endl;
+                cout<<"Name :"<<p1->getname() <<endl;
+                cout<<"Category :"<<p1->getcategory() <<endl;
+                cout<<"Price:   Rs."<<p1->getprice() <<endl;
+                cout<<"Quantity :"<<p1->geetquantity() <<endl;
+                cout<<"___________________________________________________________________"<<endl;
             }
             
             else
             {
                 cout<<Red<< "Product not found."<<endl;
-                cout<<Reset<< "-----------------------------------------------------------"<<endl;
+                cout<<Reset<< "___________________________________________________________"<<endl;
             }
         }
 
@@ -518,7 +540,7 @@ char option;
             cout<<"Enter new product category: ";
             cin>>category;
             
-            cout<<"Enter new product price: $ ";
+            cout<<"Enter new product price: Rs. ";
             cin>>price;
             
             cout<<"Enter new product quantity: ";
@@ -526,7 +548,7 @@ char option;
             inventory.updatep1(id, name, category, price, quantity);
             cout<<Green<<"Product updated successfully."<<endl;
             cout<<Reset;
-            cout<<"-----------------------------------------------------------"<<endl;
+            cout<<"___________________________________________________________"<<endl;
         }
         
         else if(option=='5')
@@ -537,16 +559,16 @@ char option;
         else if(option=='Q' || option=='q')
         {
             cout<<Green<<endl<<"Goodbye!"<<endl<<endl;
-            cout<<Reset <<"-----------------------------------------------------------"<<endl;
+            cout<<Reset <<"___________________________________________________________"<<endl;
             return 0;
         }
         else
         {
             cout<<Red<<"Invalid option. Please Try again"<<endl;
-            cout<<"-----------------------------------------------------------"<<endl;
+            cout<<"___________________________________________________________"<<endl;
             cout<<Reset;
         }
-    } while(true);
+    }while(true);
 
 
     return 0;
